@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscription étudiant</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; background: #f3f6fb; margin: 0; padding: 2rem; }
+    form { max-width: 640px; margin: auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    h1 { color: #0b3d91; margin-top: 0; }
+    .champ { margin-bottom: 1rem; }
+    label { display: block; font-weight: 600; margin-bottom: .25rem; }
+    input, select { width: 100%; padding: .55rem; border: 1px solid #b8c2d0; border-radius: 6px; box-sizing: border-box; }
+    .radio-group { display: flex; gap: 1rem; margin-top: .4rem; }
+    .radio-option { display: inline-flex; align-items: center; gap: .5rem; font-weight: 400; }
+    .radio-option input { width: auto; }
+    .invalide { border-color: #d62828; }
+    .erreur { color: #d62828; font-size: .85rem; min-height: 1.1em; }
+    button { background: #0b3d91; color: #fff; border: 0; padding: .7rem 1.6rem; border-radius: 6px; cursor: pointer; }
+    #resultat { margin-top: 1rem; font-weight: 600; color: #1b7f3b; }
+  </style>
+</head>
+<body>
+  <form id="formEtudiant" method="post" action="save.php" novalidate>
+    <h1>Inscription d'un étudiant</h1>
+    <input type="hidden" name="mode" value="create">
+
+    <div class="champ"><label for="idEtu">Matricule</label><input id="idEtu" name="idEtu" placeholder="ex. 21A0123"><div class="erreur"></div></div>
+    <div class="champ"><label for="nomEtu">Nom</label><input id="nomEtu" name="nomEtu"><div class="erreur"></div></div>
+    <div class="champ"><label for="prenomEtu">Prénom</label><input id="prenomEtu" name="prenomEtu"><div class="erreur"></div></div>
+    <div class="champ">
+      <label>Sexe</label>
+      <div class="radio-group">
+        <label class="radio-option"><input type="radio" name="sexeEtu" value="Masculin"> Masculin</label>
+        <label class="radio-option"><input type="radio" name="sexeEtu" value="Féminin"> Féminin</label>
+        <label class="radio-option"><input type="radio" name="sexeEtu" value="Autre"> Autre</label>
+      </div>
+      <div class="erreur"></div>
+    </div>
+    <div class="champ"><label for="dateNaiss">Date de naissance</label><input type="date" id="dateNaiss" name="dateNaiss"><div class="erreur"></div></div>
+    <div class="champ"><label for="lieuNaiss">Lieu de naissance</label><input id="lieuNaiss" name="lieuNaiss"><div class="erreur"></div></div>
+    <div class="champ"><label for="emailEtu">Email</label><input type="email" id="emailEtu" name="emailEtu"><div class="erreur"></div></div>
+    <div class="champ"><label for="numTelEtu">Téléphone</label><input id="numTelEtu" name="numTelEtu" placeholder="+237 6XX XX XX XX"><div class="erreur"></div></div>
+    <div class="champ"><label for="regEtu">Région</label><input id="regEtu" name="regEtu"><div class="erreur"></div></div>
+    <div class="champ"><label for="departEtu">Département</label><input id="departEtu" name="departEtu"><div class="erreur"></div></div>
+    <div class="champ"><label for="arrondisEtu">Arrondissement</label><input id="arrondisEtu" name="arrondisEtu"><div class="erreur"></div></div>
+    <div class="champ"><label for="mentionEtu">Mention</label>
+      <select id="mentionEtu" name="mentionEtu"><option value="">-- Choisir --</option><option>Informatique</option><option>Mécatronique</option><option>Mathématiques</option></select><div class="erreur"></div></div>
+    <div class="champ"><label for="cycleEtu">Cycle</label>
+      <select id="cycleEtu" name="cycleEtu"><option value="">-- Choisir --</option><option>Licence</option><option>Master</option><option>Doctorat</option></select><div class="erreur"></div></div>
+    <div class="champ"><label for="ParcoursEtu">Parcours</label><input id="ParcoursEtu" name="ParcoursEtu"><div class="erreur"></div></div>
+
+    <button type="submit">Enregistrer</button>
+    <div id="resultat" role="status"></div>
+  </form>
+  <script src="validation.js"></script>
+</body>
+</html>
